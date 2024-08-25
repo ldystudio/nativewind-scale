@@ -1,1 +1,1 @@
-# nativewind-scale
+# @kirz/nativewind-scale
