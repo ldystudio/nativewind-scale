@@ -5,44 +5,33 @@ import { View } from 'react-native';
 
 import { scaleX, scaleY } from './scale';
 import { Config } from 'tailwindcss';
+import { scaleVariables } from './scale-variables';
 
 type NativeWindWrapperProps = PropsWithChildren<{
   config: Config
 }>;
 
-// const scaleValue = (value: number, type?: 'x' | 'y') => {
-//   if (type === 'x') {
-//     return scaleX(value);
-//   }
-
-//   return scaleY(value);
-// };
-
 export function NativewindWrapper({
   children,
   config
 }: NativeWindWrapperProps) {
-  const resolvedConfig = useMemo(()=> {
-    return resolveConfig(config)
+  const variables = useMemo(()=> {
+    return Object.entries(scaleVariables).map(([key, value]) => {
+      const name = key.replace('var(--scale-', '').replace(')', '')
+      
+      if (name.startsWith('y')) {
+        return [`--scale-${name}`, scaleY(value)] as const
+      }
+      
+      return [`--scale-${name}`, scaleX(value)] as const
+    })
   }, [config])
 
-  console.log(resolvedConfig)
+  console.log(variables)
 
   return (
     <View
-      style={[
-        { flex: 1 },
-        // vars(
-        //   // Object.fromEntries(
-        //   //   (['x', 'y'] as const).flatMap((v) =>
-        //   //     spacing.map((s) => [
-        //   //       buildValue(s, v).replace('var(', '').replace(')', ''),
-        //   //       scaleValue(s, v),
-        //   //     ])
-        //   //   )
-        //   // )
-        // ),
-      ]}>
+      style={[ { flex: 1 }, vars(Object.fromEntries(variables)) ]}>
       {children}
     </View>
   );

@@ -1,36 +1,23 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NativewindWrapper = NativewindWrapper;
-const resolveConfig_1 = __importDefault(require("tailwindcss/resolveConfig"));
+const nativewind_1 = require("nativewind");
 const react_1 = require("react");
 const react_native_1 = require("react-native");
-// const scaleValue = (value: number, type?: 'x' | 'y') => {
-//   if (type === 'x') {
-//     return scaleX(value);
-//   }
-//   return scaleY(value);
-// };
+const scale_1 = require("./scale");
+const scale_variables_1 = require("./scale-variables");
 function NativewindWrapper({ children, config }) {
-    const resolvedConfig = (0, react_1.useMemo)(() => {
-        return (0, resolveConfig_1.default)(config);
+    const variables = (0, react_1.useMemo)(() => {
+        return Object.entries(scale_variables_1.scaleVariables).map(([key, value]) => {
+            const name = key.replace('var(--scale-', '').replace(')', '');
+            if (name.startsWith('y')) {
+                return [`--scale-${name}`, (0, scale_1.scaleY)(value)];
+            }
+            return [`--scale-${name}`, (0, scale_1.scaleX)(value)];
+        });
     }, [config]);
-    console.log(resolvedConfig);
-    return (<react_native_1.View style={[
-            { flex: 1 },
-            // vars(
-            //   // Object.fromEntries(
-            //   //   (['x', 'y'] as const).flatMap((v) =>
-            //   //     spacing.map((s) => [
-            //   //       buildValue(s, v).replace('var(', '').replace(')', ''),
-            //   //       scaleValue(s, v),
-            //   //     ])
-            //   //   )
-            //   // )
-            // ),
-        ]}>
+    console.log(variables);
+    return (<react_native_1.View style={[{ flex: 1 }, (0, nativewind_1.vars)(Object.fromEntries(variables))]}>
       {children}
     </react_native_1.View>);
 }
