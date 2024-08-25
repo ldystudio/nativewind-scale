@@ -1,6 +1,6 @@
 {
   "name": "@kirz/nativewind-scale",
-  "version": "0.0.1-canary.8",
+  "version": "1.0.0",
   "description": "Scaling utilities for Nativewind",
   "author": "Kirill Zaidulin <zaidulinkirill@gmail.com>",
   "license": "MIT",

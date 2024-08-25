@@ -1,10 +1,19 @@
 import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
-import { spacing } from './spacing';
+import { scaleVar } from './scale-var';
+
+
+const spacing = [
+  0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9,
+  9.5, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 28, 32, 36, 40, 44, 48,
+  52, 56, 60, 64, 72, 80, 96,
+];
 
 export default {
   theme: {
-    ...spacing,
+    spacing: {},
+    spacingX: Object.fromEntries(spacing.map((s) => [s, scaleVar(s, 'x')])),
+    spacingY: Object.fromEntries(spacing.map((s) => [s, scaleVar(s, 'y')])),
     borderSpacing: {},
     gap: {},
     height: {},
@@ -20,32 +29,34 @@ export default {
     width: {},
     size: {},
     fontSize: {
-      xs: ['var(--scale-x-10_5)', { lineHeight: '14px' }],
-      sm: ['12.25px', { lineHeight: '17.5px' }],
-      base: ['14px', { lineHeight: '21px' }],
-      lg: ['15.75px', { lineHeight: '24.5px' }],
-      xl: ['17.5px', { lineHeight: '24.5px' }],
-      '2xl': ['21px', { lineHeight: '28px' }],
-      '3xl': ['26.25px', { lineHeight: '31.5px' }],
-      '4xl': ['31.5px', { lineHeight: '35px' }],
-      '5xl': ['42px', { lineHeight: '42px' }],
-      '6xl': ['52.5px', { lineHeight: '52.5px' }],
-      '7xl': ['63px', { lineHeight: '63px' }],
-      '8xl': ['84px', { lineHeight: '84px' }],
-      '9xl': ['112px', { lineHeight: '112px' }],
-      // xs: ['var(--scale-x-10_5)  10.5px', { lineHeight: '14px' }],
-      // sm: ['12.25px', { lineHeight: '17.5px' }],
-      // base: ['14px', { lineHeight: '21px' }],
-      // lg: ['15.75px', { lineHeight: '24.5px' }],
-      // xl: ['17.5px', { lineHeight: '24.5px' }],
-      // '2xl': ['21px', { lineHeight: '28px' }],
-      // '3xl': ['26.25px', { lineHeight: '31.5px' }],
-      // '4xl': ['31.5px', { lineHeight: '35px' }],
-      // '5xl': ['42px', { lineHeight: '42px' }],
-      // '6xl': ['52.5px', { lineHeight: '52.5px' }],
-      // '7xl': ['63px', { lineHeight: '63px' }],
-      // '8xl': ['84px', { lineHeight: '84px' }],
-      // '9xl': ['112px', { lineHeight: '112px' }],
+      xs: [scaleVar(10.5), { lineHeight: scaleVar(14) }],
+      sm: [scaleVar(12.25), { lineHeight: scaleVar(17.5)}],
+      base: [scaleVar(14), { lineHeight: scaleVar(21) }],
+      lg: [scaleVar(15.75), { lineHeight: scaleVar(24.5) }],
+      xl: [scaleVar(17.5), { lineHeight: scaleVar(24.5) }],
+      '2xl': [scaleVar(21), { lineHeight: scaleVar(28) }],
+      '3xl': [scaleVar(26.25), { lineHeight: scaleVar(31.5) }],
+      '4xl': [scaleVar(31.5), { lineHeight: scaleVar(35) }],
+      '5xl': [scaleVar(42), { lineHeight: scaleVar(42) }],
+      '6xl': [scaleVar(52.5), { lineHeight: scaleVar(52.5) }],
+      '7xl': [scaleVar(63), { lineHeight: scaleVar(63)  }],
+      '8xl': [scaleVar(84) , { lineHeight: scaleVar(84)  }],
+      '9xl': [scaleVar(112) , { lineHeight: scaleVar(112)  }],
+    },
+    lineHeight: {
+      xs: scaleVar(14),
+      sm: scaleVar(17.5),
+      base: scaleVar(21),
+      lg: scaleVar(24.5),
+      xl: scaleVar(24.5),
+      '2xl': scaleVar(28),
+      '3xl': scaleVar(31.5),
+      '4xl': scaleVar(35),
+      '5xl': scaleVar(42),
+      '6xl': scaleVar(52.5),
+      '7xl': scaleVar(63),
+      '8xl': scaleVar(84),
+      '9xl': scaleVar(112),
     },
   },
   plugins: [

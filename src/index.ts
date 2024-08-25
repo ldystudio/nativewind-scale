@@ -1,4 +1,3 @@
-import type { Config } from 'tailwindcss';
-import plugin from 'tailwindcss/plugin';
-import { spacing } from './spacing';
+export { scaleX, scaleY, ScaleReference } from './scale';
+
 export { NativewindWrapper } from './nativewind-wrapper';
