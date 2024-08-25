@@ -1,8 +1,5 @@
-export declare const valueWrapper: (value: string, type?: "x" | "y") => string;
-export declare const buildValue: (value: number | string, type?: "x" | "y") => string;
+export { NativewindWrapper } from './nativewind-wrapper';
 declare const _default: {
-    presets: any[];
-    darkMode: "class";
     theme: {
         borderSpacing: {};
         gap: {};

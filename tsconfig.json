@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
     "strict": true,
     "allowJs": true,
     "esModuleInterop": true,
@@ -12,5 +13,8 @@
     "declaration": true,
     "module": "Node16",
     "outDir": "dist"
-  }
+  },
+  "include": [
+    "./src/**/*.ts",
+  ]
 }

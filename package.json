@@ -1,6 +1,6 @@
 {
   "name": "@kirz/nativewind-scale",
-  "version": "0.0.1-canary.3",
+  "version": "0.0.1-canary.4",
   "description": "Scaling utilities for Nativewind",
   "author": "Kirill Zaidulin <zaidulinkirill@gmail.com>",
   "license": "MIT",
@@ -10,8 +10,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "prepublish": "build",
-    "publish": "npm publish --access public"
+    "release": "npm run build && npm publish --access public"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

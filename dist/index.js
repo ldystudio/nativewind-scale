@@ -3,35 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buildValue = exports.valueWrapper = void 0;
+exports.NativewindWrapper = void 0;
 const plugin_1 = __importDefault(require("tailwindcss/plugin"));
 const spacing_1 = require("./spacing");
-const scaleVariables = new Set();
-const valueWrapper = (value, type) => {
-    return `var(--scale-${type ? `${type}-` : ''}${value})`;
-};
-exports.valueWrapper = valueWrapper;
-const buildValue = (value, type) => {
-    if (typeof value === 'string') {
-        return (0, exports.valueWrapper)(value, type);
-    }
-    if (value.toString().includes('.')) {
-        return (0, exports.valueWrapper)(value.toString().split('.').join('_'), type);
-    }
-    return (0, exports.valueWrapper)(value.toString(), type);
-};
-exports.buildValue = buildValue;
-const registerScaleVariable = (value, type = 'x') => {
-    const name = (0, exports.buildValue)(value, type);
-    if (!scaleVariables.has(name)) {
-        scaleVariables.add(name);
-    }
-    return name;
-};
-// presets: [require('@kirz/nativewind-scale')]
+var nativewind_wrapper_1 = require("./nativewind-wrapper");
+Object.defineProperty(exports, "NativewindWrapper", { enumerable: true, get: function () { return nativewind_wrapper_1.NativewindWrapper; } });
 exports.default = {
-    presets: [require('nativewind/preset')],
-    darkMode: 'class',
     theme: {
         ...spacing_1.spacing,
         borderSpacing: {},
