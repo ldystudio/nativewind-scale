@@ -1,6 +1,6 @@
 {
   "name": "@kirz/nativewind-scale",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Scaling utilities for Nativewind",
   "author": "Kirill Zaidulin <zaidulinkirill@gmail.com>",
   "license": "MIT",
@@ -16,7 +16,8 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "preset"
+    "preset",
+    "vars"
   ],
   "keywords": [
     "Nativewind",
