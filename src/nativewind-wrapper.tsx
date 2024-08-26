@@ -27,8 +27,6 @@ export function NativewindWrapper({
     })
   }, [config])
 
-  console.log(variables)
-
   return (
     <View
       style={[ { flex: 1 }, vars(Object.fromEntries(variables)) ]}>

@@ -16,7 +16,6 @@ function NativewindWrapper({ children, config }) {
             return [`--scale-${name}`, (0, scale_1.scaleX)(value)];
         });
     }, [config]);
-    console.log(variables);
     return (<react_native_1.View style={[{ flex: 1 }, (0, nativewind_1.vars)(Object.fromEntries(variables))]}>
       {children}
     </react_native_1.View>);
