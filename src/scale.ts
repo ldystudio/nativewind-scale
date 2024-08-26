@@ -1,6 +1,14 @@
 import { Dimensions } from 'react-native';
 
-const { width, height } = Dimensions.get('window');
+let width = 0, height = 0
+try {
+  width = Dimensions.get('window').width
+  height = Dimensions.get('window').height
+}
+catch {
+  // no-op
+}
+
 const [shortDimension, longDimension] =
   width < height ? [width, height] : [height, width];
 
