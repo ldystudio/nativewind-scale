@@ -3,6 +3,7 @@ import plugin from 'tailwindcss/plugin';
 import { scaleVar } from './scale-var';
 
 
+const space = 4
 const spacing = [
   0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9,
   9.5, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 28, 32, 36, 40, 44, 48,
@@ -12,8 +13,8 @@ const spacing = [
 export default {
   theme: {
     spacing: {},
-    spacingX: Object.fromEntries(spacing.map((s) => [s, scaleVar(s, 'x')])),
-    spacingY: Object.fromEntries(spacing.map((s) => [s, scaleVar(s, 'y')])),
+    spacingX: Object.fromEntries(spacing.map((s) => [s, scaleVar(s * space, 'x')])),
+    spacingY: Object.fromEntries(spacing.map((s) => [s, scaleVar(s * space, 'y')])),
     borderSpacing: {},
     gap: {},
     height: {},
