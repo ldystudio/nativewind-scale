@@ -29,21 +29,7 @@ export default {
     scrollPadding: {},
     width: {},
     size: {},
-    fontSize: {
-      xs: [scaleVar(12), { lineHeight: scaleVar(16) }],
-      sm: [scaleVar(14), { lineHeight: scaleVar(20) }],
-      base: [scaleVar(16), { lineHeight: scaleVar(24) }],
-      lg: [scaleVar(18), { lineHeight: scaleVar(26) }],
-      xl: [scaleVar(20), { lineHeight: scaleVar(28) }],
-      '2xl': [scaleVar(24), { lineHeight: scaleVar(32) }],
-      '3xl': [scaleVar(30), { lineHeight: scaleVar(36) }],
-      '4xl': [scaleVar(36), { lineHeight: scaleVar(40) }],
-      '5xl': [scaleVar(48), { lineHeight: scaleVar(48) }],
-      '6xl': [scaleVar(60), { lineHeight: scaleVar(60) }],
-      '7xl': [scaleVar(72), { lineHeight: scaleVar(72) }],
-      '8xl': [scaleVar(96), { lineHeight: scaleVar(96) }],
-      '9xl': [scaleVar(128), { lineHeight: scaleVar(128) }],
-    },
+    fontSize: {},
     lineHeight: {
       xs: scaleVar(16),
       sm: scaleVar(20),
@@ -131,7 +117,6 @@ export default {
         }
       );
 
-
       matchUtilities(
         {
           p: (value) => ({ padding: value }),
@@ -211,6 +196,30 @@ export default {
           },
           modifiers,
           type: 'absolute-size',
+        }
+      );
+
+      matchUtilities(
+        {
+          [`text`]: (value) => ({ fontSize: value }),
+        },
+        {
+          values: {
+            xs: scaleVar(12),
+            sm: scaleVar(14),
+            base: scaleVar(16),
+            lg: scaleVar(18),
+            xl: scaleVar(20),
+            '2xl': scaleVar(24),
+            '3xl': scaleVar(30),
+            '4xl': scaleVar(36),
+            '5xl': scaleVar(48),
+            '6xl': scaleVar(60),
+            '7xl': scaleVar(72),
+            '8xl': scaleVar(96),
+            '9xl': scaleVar(128),
+          },
+          modifiers,
         }
       );
 
