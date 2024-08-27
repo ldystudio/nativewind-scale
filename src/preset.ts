@@ -122,6 +122,18 @@ export default {
           ml: (value) => ({ marginLeft: value }),
           mr: (value) => ({ marginRight: value }),
           mx: (value) => ({ marginLeft: value, marginRight: value }),
+        },
+        {
+          values: { ...spacingX, auto: 'auto' },
+          modifiers,
+          type: 'position',
+          supportsNegativeValues: true
+        }
+      );
+
+
+      matchUtilities(
+        {
           p: (value) => ({ padding: value }),
           pl: (value) => ({ paddingLeft: value }),
           pr: (value) => ({ paddingRight: value }),
@@ -139,6 +151,17 @@ export default {
           mt: (value) => ({ marginTop: value }),
           mb: (value) => ({ marginBottom: value }),
           my: (value) => ({ marginTop: value, marginBottom: value }),
+        },
+        {
+          values: { ...spacingY, auto: 'auto' },
+          modifiers,
+          type: 'position',
+          supportsNegativeValues: true
+        }
+      );
+
+      matchUtilities(
+        {
           pt: (value) => ({ paddingTop: value }),
           pb: (value) => ({ paddingBottom: value }),
           py: (value) => ({ paddingTop: value, paddingBottom: value }),
