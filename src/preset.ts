@@ -125,8 +125,6 @@ export default {
           inset: (value) => ({ top: value, left: value, right: value, bottom: value }),
           [`inset-x`]: (value) => ({ right: value, left: value }),
           [`inset-y`]: (value) => ({ top: value, bottom: value }),
-          top: (value) => ({ top: value }),
-          bottom: (value) => ({ bottom: value }),
           left: (value) => ({ left: value }),
           right: (value) => ({ right: value }),
         },
@@ -158,6 +156,8 @@ export default {
           mt: (value) => ({ marginTop: value }),
           mb: (value) => ({ marginBottom: value }),
           my: (value) => ({ marginTop: value, marginBottom: value }),
+          top: (value) => ({ top: value }),
+          bottom: (value) => ({ bottom: value }),
         },
         {
           values: { ...spacingY, auto: 'auto' },
