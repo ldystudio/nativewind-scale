@@ -122,6 +122,13 @@ export default {
           ml: (value) => ({ marginLeft: value }),
           mr: (value) => ({ marginRight: value }),
           mx: (value) => ({ marginLeft: value, marginRight: value }),
+          inset: (value) => ({ top: value, left: value, right: value, bottom: value }),
+          [`inset-x`]: (value) => ({ right: value, left: value }),
+          [`inset-y`]: (value) => ({ top: value, bottom: value }),
+          top: (value) => ({ top: value }),
+          bottom: (value) => ({ bottom: value }),
+          left: (value) => ({ left: value }),
+          right: (value) => ({ right: value }),
         },
         {
           values: { ...spacingX, auto: 'auto' },
