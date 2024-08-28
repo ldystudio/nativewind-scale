@@ -152,6 +152,7 @@ exports.default = {
                 type: 'position',
             });
             matchUtilities({
+                [`h`]: (value) => ({ height: value }),
                 [`min-h`]: (value) => ({ minHeight: value }),
                 [`max-h`]: (value) => ({ maxHeight: value }),
             }, {
