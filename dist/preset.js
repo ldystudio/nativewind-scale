@@ -30,7 +30,21 @@ exports.default = {
         scrollPadding: {},
         width: {},
         size: {},
-        fontSize: {},
+        fontSize: {
+            xs: (0, scale_var_1.scaleVar)(12),
+            sm: (0, scale_var_1.scaleVar)(14),
+            base: (0, scale_var_1.scaleVar)(16),
+            lg: (0, scale_var_1.scaleVar)(18),
+            xl: (0, scale_var_1.scaleVar)(20),
+            '2xl': (0, scale_var_1.scaleVar)(24),
+            '3xl': (0, scale_var_1.scaleVar)(30),
+            '4xl': (0, scale_var_1.scaleVar)(36),
+            '5xl': (0, scale_var_1.scaleVar)(48),
+            '6xl': (0, scale_var_1.scaleVar)(60),
+            '7xl': (0, scale_var_1.scaleVar)(72),
+            '8xl': (0, scale_var_1.scaleVar)(96),
+            '9xl': (0, scale_var_1.scaleVar)(128),
+        },
         lineHeight: {
             xs: (0, scale_var_1.scaleVar)(16),
             sm: (0, scale_var_1.scaleVar)(20),
@@ -162,26 +176,6 @@ exports.default = {
                 },
                 modifiers,
                 type: 'absolute-size',
-            });
-            matchUtilities({
-                [`text`]: (value) => ({ fontSize: value }),
-            }, {
-                values: {
-                    xs: (0, scale_var_1.scaleVar)(12),
-                    sm: (0, scale_var_1.scaleVar)(14),
-                    base: (0, scale_var_1.scaleVar)(16),
-                    lg: (0, scale_var_1.scaleVar)(18),
-                    xl: (0, scale_var_1.scaleVar)(20),
-                    '2xl': (0, scale_var_1.scaleVar)(24),
-                    '3xl': (0, scale_var_1.scaleVar)(30),
-                    '4xl': (0, scale_var_1.scaleVar)(36),
-                    '5xl': (0, scale_var_1.scaleVar)(48),
-                    '6xl': (0, scale_var_1.scaleVar)(60),
-                    '7xl': (0, scale_var_1.scaleVar)(72),
-                    '8xl': (0, scale_var_1.scaleVar)(96),
-                    '9xl': (0, scale_var_1.scaleVar)(128),
-                },
-                modifiers,
             });
             return;
         }),

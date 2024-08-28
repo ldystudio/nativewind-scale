@@ -29,7 +29,21 @@ export default {
     scrollPadding: {},
     width: {},
     size: {},
-    fontSize: {},
+    fontSize: {
+      xs: scaleVar(12),
+      sm: scaleVar(14),
+      base: scaleVar(16),
+      lg: scaleVar(18),
+      xl: scaleVar(20),
+      '2xl': scaleVar(24),
+      '3xl': scaleVar(30),
+      '4xl': scaleVar(36),
+      '5xl': scaleVar(48),
+      '6xl': scaleVar(60),
+      '7xl': scaleVar(72),
+      '8xl': scaleVar(96),
+      '9xl': scaleVar(128),
+    },
     lineHeight: {
       xs: scaleVar(16),
       sm: scaleVar(20),
@@ -117,6 +131,7 @@ export default {
         }
       );
 
+
       matchUtilities(
         {
           p: (value) => ({ padding: value }),
@@ -196,30 +211,6 @@ export default {
           },
           modifiers,
           type: 'absolute-size',
-        }
-      );
-
-      matchUtilities(
-        {
-          [`text`]: (value) => ({ fontSize: value }),
-        },
-        {
-          values: {
-            xs: scaleVar(12),
-            sm: scaleVar(14),
-            base: scaleVar(16),
-            lg: scaleVar(18),
-            xl: scaleVar(20),
-            '2xl': scaleVar(24),
-            '3xl': scaleVar(30),
-            '4xl': scaleVar(36),
-            '5xl': scaleVar(48),
-            '6xl': scaleVar(60),
-            '7xl': scaleVar(72),
-            '8xl': scaleVar(96),
-            '9xl': scaleVar(128),
-          },
-          modifiers,
         }
       );
 
