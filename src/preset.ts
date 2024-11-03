@@ -4,17 +4,23 @@ import { scaleVar } from './scale-var';
 
 
 const space = 4
-const spacing = [
-  0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9,
-  9.5, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 28, 32, 36, 40, 44, 48,
-  52, 56, 60, 64, 72, 80, 96,
-];
+const spacing = [...new Array(100).keys()].flatMap((i) => [
+  i, ...i < 20 ? [i + 0.5] : []
+])
 
 export default {
   theme: {
     spacing: {},
-    spacingX: Object.fromEntries(spacing.map((s) => [s, scaleVar(s * space, 'x')])),
-    spacingY: Object.fromEntries(spacing.map((s) => [s, scaleVar(s * space, 'y')])),
+    spacingX: {
+      ...Object.fromEntries(spacing.map((s) => [s, scaleVar(s * space, 'x')])),
+      screen: 'var(--screen-width)',
+    },
+    spacingY: {
+      ...Object.fromEntries(spacing.map((s) => [s, scaleVar(s * space, 'y')])),
+      screen: 'var(--screen-height)',
+      'edge-t': 'var(--edge-top)',
+      'edge-b': 'var(--edge-bottom)',
+    },
     borderSpacing: {},
     gap: {},
     height: {},
@@ -30,6 +36,7 @@ export default {
     width: {},
     size: {},
     fontSize: {
+      xxs: scaleVar(10),
       xs: scaleVar(12),
       sm: scaleVar(14),
       base: scaleVar(16),
@@ -45,6 +52,7 @@ export default {
       '9xl': scaleVar(128),
     },
     lineHeight: {
+      xxs: scaleVar(12),
       xs: scaleVar(16),
       sm: scaleVar(20),
       base: scaleVar(24),

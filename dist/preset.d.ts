@@ -2,10 +2,12 @@ declare const _default: {
     theme: {
         spacing: {};
         spacingX: {
-            [k: string]: string;
+            screen: string;
         };
         spacingY: {
-            [k: string]: string;
+            screen: string;
+            'edge-t': string;
+            'edge-b': string;
         };
         borderSpacing: {};
         gap: {};
@@ -22,6 +24,7 @@ declare const _default: {
         width: {};
         size: {};
         fontSize: {
+            xxs: string;
             xs: string;
             sm: string;
             base: string;
@@ -37,6 +40,7 @@ declare const _default: {
             '9xl': string;
         };
         lineHeight: {
+            xxs: string;
             xs: string;
             sm: string;
             base: string;

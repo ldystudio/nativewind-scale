@@ -6,16 +6,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const plugin_1 = __importDefault(require("tailwindcss/plugin"));
 const scale_var_1 = require("./scale-var");
 const space = 4;
-const spacing = [
-    0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9,
-    9.5, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 28, 32, 36, 40, 44, 48,
-    52, 56, 60, 64, 72, 80, 96,
-];
+const spacing = [...new Array(100).keys()].flatMap((i) => [
+    i, ...i < 20 ? [i + 0.5] : []
+]);
 exports.default = {
     theme: {
         spacing: {},
-        spacingX: Object.fromEntries(spacing.map((s) => [s, (0, scale_var_1.scaleVar)(s * space, 'x')])),
-        spacingY: Object.fromEntries(spacing.map((s) => [s, (0, scale_var_1.scaleVar)(s * space, 'y')])),
+        spacingX: {
+            ...Object.fromEntries(spacing.map((s) => [s, (0, scale_var_1.scaleVar)(s * space, 'x')])),
+            screen: 'var(--screen-width)',
+        },
+        spacingY: {
+            ...Object.fromEntries(spacing.map((s) => [s, (0, scale_var_1.scaleVar)(s * space, 'y')])),
+            screen: 'var(--screen-height)',
+            'edge-t': 'var(--edge-top)',
+            'edge-b': 'var(--edge-bottom)',
+        },
         borderSpacing: {},
         gap: {},
         height: {},
@@ -31,6 +37,7 @@ exports.default = {
         width: {},
         size: {},
         fontSize: {
+            xxs: (0, scale_var_1.scaleVar)(10),
             xs: (0, scale_var_1.scaleVar)(12),
             sm: (0, scale_var_1.scaleVar)(14),
             base: (0, scale_var_1.scaleVar)(16),
@@ -46,6 +53,7 @@ exports.default = {
             '9xl': (0, scale_var_1.scaleVar)(128),
         },
         lineHeight: {
+            xxs: (0, scale_var_1.scaleVar)(12),
             xs: (0, scale_var_1.scaleVar)(16),
             sm: (0, scale_var_1.scaleVar)(20),
             base: (0, scale_var_1.scaleVar)(24),
