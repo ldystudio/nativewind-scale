@@ -13,20 +13,23 @@ function NativewindWrapper({ children, config }) {
         return Object.entries(scale_variables_1.scaleVariables).map(([key, value]) => {
             const name = key.replace('var(--scale-', '').replace(')', '');
             if (name.startsWith('y')) {
-                return [`--scale-${name}`, (0, scale_1.scaleY)(value)];
+                return [`--scale-${name}`, (0, scale_1.scale)(value)];
             }
-            return [`--scale-${name}`, (0, scale_1.scaleX)(value)];
+            return [`--scale-${name}`, (0, scale_1.scale)(value)];
         });
     }, [config]);
     return (<react_native_1.View style={[
-            { flex: 1 }, (0, nativewind_1.vars)({
+            { flex: 1 },
+            (0, nativewind_1.vars)({
                 ...Object.fromEntries(variables),
                 '--screen-width': react_native_1.Dimensions.get('screen').width,
                 '--screen-height': react_native_1.Dimensions.get('screen').height,
                 '--edge-t': insets.top,
                 '--edge-b': insets.bottom,
-            })
+                '--edge-l': insets.left,
+                '--edge-r': insets.right,
+            }),
         ]}>
-      {children}
-    </react_native_1.View>);
+            {children}
+        </react_native_1.View>);
 }

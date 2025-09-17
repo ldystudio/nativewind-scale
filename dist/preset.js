@@ -1,14 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const scale_var_1 = require("./scale-var");
-const space = 4;
-const spacing = [...new Array(100).keys()].flatMap((i) => [
-    i, ...i < 20 ? [i + 0.5] : []
-]);
-const spacingX = Object.fromEntries(spacing.map((s) => [s, (0, scale_var_1.scaleVar)(s * space, 'x')]));
-const spacingY = Object.fromEntries(spacing.map((s) => [s, (0, scale_var_1.scaleVar)(s * space, 'y')]));
+const space = 1;
+const spacing = [...new Array(813).keys()];
+const spacingVar = Object.fromEntries(spacing.map((s) => [s, (0, scale_var_1.scaleVar)(s * space)]));
 const combinedSpacing = {
-    ...Object.fromEntries(spacing.map((s) => [s, (0, scale_var_1.scaleVar)(s * space)])),
+    ...spacingVar,
     px: '1px',
     0: '0px',
     0.5: (0, scale_var_1.scaleVar)(2),
@@ -16,16 +13,20 @@ const combinedSpacing = {
     'screen-y': 'var(--screen-height)',
     'edge-t': 'var(--edge-top)',
     'edge-b': 'var(--edge-bottom)',
+    'edge-l': 'var(--edge-left)',
+    'edge-r': 'var(--edge-right)',
 };
 exports.default = {
     theme: {
         spacing: combinedSpacing,
         spacingX: {
-            ...spacingX,
+            ...spacingVar,
             screen: 'var(--screen-width)',
+            'edge-l': 'var(--edge-left)',
+            'edge-r': 'var(--edge-right)',
         },
         spacingY: {
-            ...spacingY,
+            ...spacingVar,
             screen: 'var(--screen-height)',
             'edge-t': 'var(--edge-top)',
             'edge-b': 'var(--edge-bottom)',
@@ -46,5 +47,62 @@ exports.default = {
             '8xl': (0, scale_var_1.scaleVar)(96),
             '9xl': (0, scale_var_1.scaleVar)(128),
         },
-    }
+        borderRadius: {
+            ...Object.fromEntries([...new Array(101).keys()].map((s) => [s, (0, scale_var_1.scaleVar)(s * space)])),
+            none: '0',
+            sm: (0, scale_var_1.scaleVar)(2),
+            base: (0, scale_var_1.scaleVar)(4),
+            md: (0, scale_var_1.scaleVar)(6),
+            lg: (0, scale_var_1.scaleVar)(8),
+            xl: (0, scale_var_1.scaleVar)(12),
+            '2xl': (0, scale_var_1.scaleVar)(16),
+            '3xl': (0, scale_var_1.scaleVar)(24),
+            full: '9999px',
+        },
+        zIndex: {
+            '-1': '-1',
+            0: '0',
+            1: '1',
+            2: '2',
+            3: '3',
+            4: '4',
+            5: '5',
+            6: '6',
+            7: '7',
+            8: '8',
+            9: '9',
+            10: '10',
+            11: '11',
+            12: '12',
+            13: '13',
+            14: '14',
+            15: '15',
+            16: '16',
+            17: '17',
+            18: '18',
+            19: '19',
+            20: '20',
+            30: '30',
+            40: '40',
+            50: '50',
+            60: '60',
+            70: '70',
+            80: '80',
+            90: '90',
+            100: '100',
+        },
+        borderWidth: {
+            0: '0',
+            1: (0, scale_var_1.scaleVar)(1),
+            2: (0, scale_var_1.scaleVar)(2),
+            3: (0, scale_var_1.scaleVar)(3),
+            4: (0, scale_var_1.scaleVar)(4),
+            5: (0, scale_var_1.scaleVar)(5),
+            6: (0, scale_var_1.scaleVar)(6),
+            7: (0, scale_var_1.scaleVar)(7),
+            8: (0, scale_var_1.scaleVar)(8),
+            9: (0, scale_var_1.scaleVar)(9),
+            10: (0, scale_var_1.scaleVar)(10),
+        },
+    },
 };
