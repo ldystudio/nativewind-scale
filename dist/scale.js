@@ -11,8 +11,7 @@ class ScaleReference {
 exports.ScaleReference = ScaleReference;
 const scale = (size) => {
     'worklet';
-    return (Math.round(Math.min(shortDimension / ScaleReference.width, longDimension / ScaleReference.height) *
-        size *
-        1000) / 1000);
+    return react_native_1.PixelRatio.roundToNearestPixel(Math.min(shortDimension / ScaleReference.width, longDimension / ScaleReference.height) *
+        size);
 };
 exports.scale = scale;
