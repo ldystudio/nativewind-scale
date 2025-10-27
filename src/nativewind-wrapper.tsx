@@ -1,6 +1,6 @@
 import { vars } from 'nativewind';
-import { PropsWithChildren, useMemo } from 'react';
-import { Dimensions, View } from 'react-native';
+import { PropsWithChildren, useMemo, useState, useEffect } from 'react';
+import { Dimensions, ScaledSize, View } from 'react-native';
 
 import { scale } from './scale';
 import { Config } from 'tailwindcss';
@@ -12,6 +12,11 @@ type NativeWindWrapperProps = PropsWithChildren<{
 }>;
 
 export function NativewindWrapper({ children, config }: NativeWindWrapperProps) {
+    const [dimensions, setDimensions] = useState({
+        width: Dimensions.get('screen').width,
+        height: Dimensions.get('screen').height,
+    });
+
     const insets = useSafeAreaInsets();
     const variables = useMemo(() => {
         return Object.entries(scaleVariables).map(([key, value]) => {
@@ -25,14 +30,21 @@ export function NativewindWrapper({ children, config }: NativeWindWrapperProps) 
         });
     }, [config]);
 
+    useEffect(() => {
+        const onChange = ({ screen }: { screen: ScaledSize }) => setDimensions(screen);
+
+        const subscription = Dimensions.addEventListener('change', onChange);
+        return () => subscription?.remove();
+    }, []);
+
     return (
         <View
             style={[
                 { flex: 1 },
                 vars({
                     ...Object.fromEntries(variables),
-                    '--screen-width': Dimensions.get('screen').width,
-                    '--screen-height': Dimensions.get('screen').height,
+                    '--screen-width': dimensions.width,
+                    '--screen-height': dimensions.height,
                     '--edge-t': insets.top,
                     '--edge-b': insets.bottom,
                     '--edge-l': insets.left,
